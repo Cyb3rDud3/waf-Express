@@ -19,9 +19,6 @@ db.serialize(() => {
 });
 
 
-app.use(responseMiddleware);
-
-
 app.use(requestMiddleware({
     resType: 'json',
     resStatusCode: 403,
@@ -31,7 +28,7 @@ app.use(requestMiddleware({
 
 
 
-app.get('/:id', (req, res) => {
+app.get('/user/:id', (req, res) => {
     const params = req.params.id
     db.get("SELECT * FROM users WHERE rowid = " + params, function (err, row) { 
         if (err) {        return res.json({ 'a': err })}
