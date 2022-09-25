@@ -82,17 +82,6 @@ const requestMiddleware = (properties) => (req, res, next) => {
             return _res(properties.resData)
         }
     }
-    if (req.query) {
-        for (let i = 0; i < req.query.length; i++) {
-            // this is query santizer, It's running only if you have any query parameters
-            for (let param of BLOCK_LIST.query) {
-                if (req.query[i].toLowerCase().includes(param.toLowerCase())) {
-                    return _res(properties.resData)
-                }
-            }
-        }
-    }
-
 
 
     console.log('Time:', Date.now(),urlDecoded)
